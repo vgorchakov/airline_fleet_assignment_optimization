@@ -23,5 +23,5 @@ class ConstraintsBuilder():
         Each flight is either sink flight (last flight of schedule) or has a outgoing node (next flight)
         """
         def _one_outgoing_edge_rule(m, f):
-            return (m.is_source_flight_var[f] + sum(m.is_flight_pair_chosen_var[(f, f1)] for f1 in outgoing_nodes[f])) == 1
+            return (m.is_sink_flight_var[f] + sum(m.is_flight_pair_chosen_var[(f, f1)] for f1 in outgoing_nodes[f])) == 1
         self.m.one_outgoing_edge_constr = pe.Constraint(self.m.flights_nodes_set, rule=_one_outgoing_edge_rule)
