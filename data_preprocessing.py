@@ -8,7 +8,7 @@ class DataPreprocess():
     def __init__(self):
         self.one_day_flights_df = None
         self.one_day_flights_df = self.preprocess_data()
-        self.flight_info_dict = self.construct_graph_input()
+        self.flight_info_dict = DataPreprocess.construct_graph_input(self.one_day_flights_df)
 
     def preprocess_data(self):
         flights_data = pd.read_csv('data/azul_airline_flights.csv')
@@ -38,6 +38,7 @@ class DataPreprocess():
         one_day_flights_df.to_csv('data/day_flights.csv')
         return one_day_flights_df
 
-    def construct_graph_input(self):
-        flight_info_dict = {row.flight_index: row.to_dict() for index, row in self.one_day_flights_df.iterrows()}
+    @staticmethod
+    def construct_graph_input(one_day_flights_df):
+        flight_info_dict = {row.flight_index: row.to_dict() for index, row in one_day_flights_df.iterrows()}
         return flight_info_dict

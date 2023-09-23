@@ -6,7 +6,7 @@ class BuildGraph():
     def __init__(self, flights_info_dict):
         self.flight_info_dict = flights_info_dict
         # nodes of the graph
-        self.flight_list = flights_info_dict.keys()
+        self.flight_list = list(flights_info_dict.keys())
         # edges of the graph
         self.flight_pairs_dict = BuildGraph.build_feasible_flight_pairs(self.flight_info_dict)
         self.incoming_nodes, self.outgoing_nodes = BuildGraph.build_incoming_outgoing_edges(self.flight_list,

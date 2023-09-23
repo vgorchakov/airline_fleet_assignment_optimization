@@ -1,2 +1,5 @@
-fleetairline/
-list/
+fleetairline/*
+list/*
+.idea/*
+lib/*
+data/
