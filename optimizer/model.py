@@ -21,7 +21,7 @@ class ModelBuild:
             model_variable_values[var.name] = {}
             for index in var:
                 if pe.value(var[index]) != 0:
-                    model_variable_values[var.name][str(index)] = pe.value(var[index])
+                    model_variable_values['_'.join([var.name, str(index)])] = pe.value(var[index])
         self.solved_model.model_variable_values = model_variable_values
 
     def build_model(self, flight_list, flight_pairs_dict, incoming_nodes, outgoing_nodes):

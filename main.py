@@ -20,8 +20,7 @@ def run_pipeline():
     with open("model_output.json", "w") as file:
         json.dump(m.solved_model.model_variable_values, file)
 
-    VisualizeSchedule(m.solved_model)
-    print(pe.value(m.solved_model.OBJ))
+    VisualizeSchedule(m.solved_model, flight_info_dict)
 
 
 if __name__ == "__main__":
